@@ -1,4 +1,4 @@
-name: 'Install and cache the dependency'
+name: 'Get and cache the dependency'
 description: 'Install and cache the dependency'
 runs:
   using: 'composite'
@@ -10,6 +10,6 @@ runs:
         path: node_modules
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     - name: Install deps
-      if: steps.cache.outputs.cachehit != 'true'
+      if: steps.cache.outputs.cache-hit != 'true'
       run: npm ci
       shell: bash
